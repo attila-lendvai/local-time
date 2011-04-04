@@ -203,6 +203,8 @@
 
 ;;; Variables
 
+(defvar *default-timezone*)
+
 (defparameter *default-timezone-repository-path*
   (flet ((try (project-home-directory)
            (when project-home-directory
@@ -464,7 +466,6 @@
       ,@(when load
               `((%realize-timezone ,zone-sym))))))
 
-(defvar *default-timezone*)
 (eval-when (:load-toplevel :execute)
   (let ((default-timezone-file #p"/etc/localtime"))
     (if (probe-file default-timezone-file)
